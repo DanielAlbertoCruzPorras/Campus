@@ -122,6 +122,19 @@ while True:
     elif op == 2:
         modificarEmpleado(lstEmpleado)
     elif op == 3:
+        while True:
+            try:
+                empleado_buscar = int(input("Digite el ID del empleado a buscar:"))
+                if empleado_buscar < 0:
+                    print("Código inválido, solo enteros positivos; Intente de nuevo.\n")
+                    continue
+                empleado = buscarEmpleado(lstEmpleado,empleado_buscar)
+                if empleado != -1:
+                    print(f"ID {lstEmpleado[empleado]}\n ")
+
+            except ValueError:
+                print("Valor inválido, intente de nuevo.\n")
+
         pass
     elif op == 4:
         pass
