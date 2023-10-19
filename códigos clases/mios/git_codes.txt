@@ -1,0 +1,43 @@
+
+## Comandos para GIT (Tomado de tutorial de "HolaMundo" y hecho en Git Bash)
+
+--version  #ver la versión de git
+
+#Configurar GIT
+
+git config --global user.name "Daniel Cruz" 
+git config --global user.email Dan.hs3.1415@gmail.com
+git config --global core.editor "code --wait" #Este comando es para configurar nuestro editor de texto predeterminado (VScode) y --wait es para que la terminal espere a que nosotros cerremos nuestro editor de texto
+git config --global -e #Este comando es para ver nuestra configuración global
+git config --global core.autocrlt true #Este comando es para configurar el final de linea (CR LF), en win en cada final de linea se agregan 2 carácteres especiales, mientras en linux solo uno (LF) por ello se configura para que git gestione esto sin que haya problemas debido a diferentes SO entre devs, entonces... win->true   linux/mac->input
+git config -h #Nos muestra un listado de los comandos para las configuraciones de GIT
+
+#Comandos
+
+pwd #Me dice e que directorio me encuentro
+ls #Lista los directoriosde la ubicación en que estoy
+cd nombre_directorio_al_cual_voy
+cd .. #Me regresa un directorio
+mkdir nombre_directorio_a_crear
+rm archivo_a_eliminar.txt 
+mv archivo_a_mover.txt #Me permite mover archivos o renombrarlos (mv origen destino)
+git init #Inicializa un repositorio en GIT, tengo que estar dentro del directorio que quiero inicializar (crea un directorio .git que no se puede ver con el comando ls, habría que usar ls -a (list all))
+cd .git #entro dentro del directorio que maneja los archivos de GIT
+
+
+computador | stage | commit | server
+
+code . #abre el editor de texto (VScode) en la carpeta/directorio en que me encuentro
+git status #Muestra el status del repositorio (Hay o no cambios y cuales, ademas de otras cosas)
+git add *.txt #GIT no sigue por defecto todos los archivos dentro del repositorio local, hay que agregarlos, para eso es git add (pasa los cambios a etapa de stage), en este caso se usa también *.txt que agrega todos los archivos con extensión .txt, para agregar todos los cambios que aparezcan en status se puede usar git add . que agrega TODO, pero es mala práctica+-, usualmente usaremos... git add nombre_archivo.txt (Se puede agregar varios separados de espacio)
+git commit -m "mensaje descriptivo de cambios" #Pasa lo de stage a commit (Compromete stage); -m es para agregar el mensaje
+git rm archivo_a_eliminar.txt #Elimina el archivo y agrega el cambio a stage
+git restore --staged archivo_en_stage.txt #Quita un cambio de stage
+git restore archivo_a_recuperar.txt
+git mv origen destino #Pasa directo los cambios hechos con mv a stage
+  
+
+
+
+
+
