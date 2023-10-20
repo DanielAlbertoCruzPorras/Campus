@@ -72,12 +72,15 @@ def ficha(datos1, datos2):
             print("Error al escoger, intente de nuevo")
             continue
 
-def pedir_casilla():
+def pedir_casilla(pos):
     while True:
         try:
             cas = int(input("Escoja la casilla donde desea jugar (número entre 1 y 9):\n"))
             if cas < 1 and cas > 9:
                 print("Eror al seleccionar, intente de nuevo.")
+                continue
+            if pos[cas-1] == "X" or pos[cas-1] == "O":
+                print("La casilla ya está tomada, seleccione otra.")
                 continue
             return cas
         except ValueError:
@@ -109,7 +112,7 @@ def juego(pos):
             c = 1.5
             pos = dibujar_tablero(pos,casilla,c)
             c = 1
-        casilla = pedir_casilla()
+        casilla = pedir_casilla(pos)
         pos = dibujar_tablero(pos,casilla,c)
         tiempo_final = time.time()
         tiempo_turno = tiempo_final - tiempo_inicial
@@ -341,6 +344,8 @@ def juego(pos):
                         datos1.append(turnos)
                         print(f"El ganador es: {datos1[0]} \nFelicitaciones!!")
                         return datos1
+            if c == 9:
+                print(f"Es un empate, buen juego!!\n")
         c += 1
 
 def set_pos():
@@ -404,23 +409,25 @@ def leer_archivo(vect_juego,ruta):
     except Exception as e:
         print("Error al cargar la información\n", e)
         return None
-    c1 = -1
-    c2 = -1
     vec_aux = []
     for i in range(len(vect_juego)):
         vec_aux.append(vect_juego[i]['3'])
+    vec_aux2 = []
+    for i in range(len(vect_juego)):
+        vec_aux2.append(vect_juego[i]['2'])
     for e in range(len(vec_aux)):
-        m = c1
+        m = e
         for i in range(len(vec_aux)):   # | 0 | 1 | 2 |
             if vec_aux[m] > vec_aux[i]:
-                m = c2
-            c2 += 1
+                m = i
+            if vec_aux[m] == vec_aux[i]:
+                if vec_aux2[m] > vec_aux2[i]:
+                    m = i
         print(f"Nombre: {vect_juego[m]['1']}")
         print(f"Tiempo: {vect_juego[m]['2']:.2f}")
         print(f"Turnos: {vect_juego[m]['3']:.0f}")
         print("-"*16)
         vec_aux[m] += 20
-        c1 += 1
     fd.close()
     return
 
