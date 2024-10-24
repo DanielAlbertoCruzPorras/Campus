@@ -14,12 +14,12 @@ git config -h #Nos muestra un listado de los comandos para las configuraciones d
 
 #Comandos
 
-pwd #Me dice e que directorio me encuentro
-ls #Lista los directoriosde la ubicación en que estoy
-cd nombre_directorio_al_cual_voy
+pwd #Me dice en que directorio me encuentro
+ls #Lista los directorios de la ubicación en que estoy
+cd nombre_directorio_al_cual_voy #Cambio de directorio indicando el directorio de destino
 cd .. #Me regresa un directorio
-mkdir nombre_directorio_a_crear
-rm archivo_a_eliminar.txt 
+mkdir nombre_directorio_a_crear #Crea un directorio con el nombre que proporciono
+rm archivo_a_eliminar.txt  #Removes a .txt
 mv archivo_a_mover.txt #Me permite mover archivos o renombrarlos (mv origen destino)
 git init #Inicializa un repositorio en GIT, tengo que estar dentro del directorio que quiero inicializar (crea un directorio .git que no se puede ver con el comando ls, habría que usar ls -a (list all))
 cd .git #entro dentro del directorio que maneja los archivos de GIT
